@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star-Delta (Y-Δ) Starting — MotorWinding Hub</title>
+<meta name="description" content="How star-delta starting works: why it cuts starting current to one third, the contactor and timer arrangement, when to use it, sizing rules and a worked 15 kW example.">
+<meta name="theme-color" content="#0f172a">
+<style>
+:root{--navy:#0f172a;--navy2:#1e293b;--amber:#f59e0b;--amber-dark:#d97706;--amber-bg:#fef3c7;--bg:#f1f5f9;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+a{color:var(--amber-dark)}
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.header-in{display:flex;align-items:center;gap:14px;padding:13px 16px;max-width:1080px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:1;min-width:200px}
+.brand .mark{width:38px;height:38px;border-radius:9px;background:var(--amber);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;flex:none}
+.brand b{font-size:19px;letter-spacing:.2px}
+.brand b span{color:var(--amber)}
+.brand small{display:block;font-size:11.5px;color:#94a3b8;font-weight:400}
+nav.main-nav{display:flex;gap:4px;flex-wrap:wrap}
+nav.main-nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:600;padding:8px 11px;border-radius:8px}
+nav.main-nav a:hover{background:var(--navy2);color:#fff}
+.article{padding:26px 0 12px}
+.back{margin-bottom:10px}
+.back a{font-weight:700;text-decoration:none}
+.back a:hover{text-decoration:underline}
+.crumb{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:6px}
+.article h1{font-size:clamp(26px,4.5vw,34px);line-height:1.25;margin-bottom:10px}
+.lede{font-size:17px;color:#334155;margin-bottom:22px}
+.article h2{font-size:21px;margin:28px 0 8px;padding-top:6px;border-top:2px solid var(--amber);display:inline-block}
+.article h3{font-size:17px;margin:18px 0 6px}
+.article p{font-size:15.5px;color:#1e293b;margin-bottom:12px}
+.article ul,.article ol{margin:0 0 14px 22px;font-size:15.5px;color:#1e293b}
+.article li{margin-bottom:6px}
+.article table{border-collapse:collapse;width:100%;font-size:14px;margin:12px 0 16px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.article th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px}
+.article td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.article tr:nth-child(even) td{background:#f8fafc}
+.formula{font-size:13.5px;color:var(--muted);background:#fff;border:1px dashed var(--border);border-radius:8px;padding:10px 12px;margin:12px 0}
+.formula code{color:var(--navy);font-weight:600}
+.safety{background:var(--red-bg);border-left:4px solid var(--red);border-radius:10px;padding:14px 16px;margin:22px 0;font-size:14.5px;color:#7f1d1d}
+.related{background:var(--amber-bg);border:1px solid #fde68a;border-radius:12px;padding:16px 18px;margin:22px 0}
+.related h3{font-size:15px;margin:0 0 8px}
+.related ul{margin:0 0 0 20px}
+.related li{margin-bottom:4px}
+footer{background:var(--navy);color:#94a3b8;margin-top:44px;padding:30px 0 26px}
+footer .cols{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:640px){footer .cols{grid-template-columns:2fr 1fr 1fr}}
+footer h4{color:#fff;font-size:15px;margin-bottom:10px}
+footer p,footer a{font-size:13.5px;color:#94a3b8;text-decoration:none}
+footer a:hover{color:#fff}
+footer ul{list-style:none}
+footer li{margin-bottom:6px}
+.copy{border-top:1px solid #1e293b;margin-top:22px;padding-top:16px;font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <a class="brand" href="../index.html"><span class="mark">MW</span><span><b>MotorWinding <span>Hub</span></b><small>motorwindinghub.github.io</small></span></a>
+    <nav class="main-nav">
+      <a href="../index.html#calculators">Calculators</a>
+      <a href="../index.html#reference">Reference Table</a>
+      <a href="../index.html#guides">Guides</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap article">
+  <p class="back"><a href="../index.html">&larr; Back to MotorWinding Hub</a></p>
+  <p class="crumb">Guides / Starting Methods</p>
+  <h1>Star-Delta (Y-Δ) Starting</h1>
+  <p class="lede">A large motor switched straight onto the supply can draw six or seven times its rated current for the first second. On a weak supply that dip can dim the lights, drop out other contactors, and annoy the whole factory. Star-delta starting is the oldest and cheapest fix: start the motor in star, let it run up, then switch it to delta for normal running.</p>
+
+  <h2>Why starting current is a problem</h2>
+  <p>At standstill a motor looks almost like a short circuit to the supply — the rotor is not turning, so there is no back EMF to limit the current. A direct-on-line (DOL) start therefore pulls roughly 6–7 times rated current. For a small motor the supply barely notices. For a 15&nbsp;kW motor drawing 170&nbsp;A at start on a 100&nbsp;kVA transformer, the voltage dip can be 15% or more, and every other machine on the same board feels it. The dip also reduces the starting torque of every other motor on the supply, since torque falls with the square of the voltage.</p>
+
+  <h2>How star-delta works</h2>
+  <p>In star, each winding sees the phase voltage — 230&nbsp;V on a 400&nbsp;V supply — instead of the full 400&nbsp;V line voltage. The voltage across each winding is 1/√3 (about 58%) of the delta value, so the current drawn from the supply falls to one third of the direct-on-line value. The price is torque: starting torque also falls to one third, so the motor accelerates more slowly and cannot start a heavy load.</p>
+  <p>Once the motor is close to full speed, a timer switches the winding connection from star to delta. At that point the motor takes the full line voltage across each winding and runs exactly as it would on a direct-on-line start, but the heavy current transient is over. The changeover itself causes a brief current spike as the motor is momentarily disconnected and reconnected, so the timer must be set so the motor is nearly at full speed before switching — if it is still crawling, the spike is almost as bad as a direct start.</p>
+
+  <h2>The three contactors and the timer</h2>
+  <p>A star-delta starter uses three contactors: the main contactor (MCM), the delta contactor (MCD) and the star contactor (MCY), plus a timer and an overload relay. The main contactor carries the full line current. The delta and star contactors each carry only the phase current, which is 58% of the line current, so they are one size smaller than the main contactor. The overload relay is normally wired in the delta circuit, where it sees phase current, and it must be set to 0.58 × the rated line current — a detail that is often set wrong.</p>
+  <p>The timer is usually set between 5 and 15 seconds, depending on the load: a fan with high inertia needs longer than a pump. The right setting is the shortest time that lets the motor reach near full speed in star. You can check it with a clamp meter: the current should have fallen close to the running value before changeover.</p>
+
+  <h2>Worked example: 15&nbsp;kW motor, 400&nbsp;V</h2>
+  <table>
+    <tr><th>Quantity</th><th>Direct-on-line</th><th>Star-delta</th></tr>
+    <tr><td>Rated current In</td><td>28.5 A</td><td>28.5 A</td></tr>
+    <tr><td>Starting current</td><td>≈ 171 A (6 × In)</td><td>≈ 57 A (2 × In)</td></tr>
+    <tr><td>Starting torque</td><td>100%</td><td>≈ 33%</td></tr>
+    <tr><td>Voltage across each winding at start</td><td>400 V</td><td>230 V</td></tr>
+    <tr><td>Main contactor</td><td>32 A</td><td>32 A</td></tr>
+    <tr><td>Delta / star contactor</td><td>—</td><td>18 A each (phase current)</td></tr>
+    <tr><td>Overload relay setting</td><td>28.5 A</td><td>16.5 A (0.58 × In)</td></tr>
+  </table>
+  <p>Cutting the starting current from 171&nbsp;A to 57&nbsp;A is what saves the supply — but note the torque also drops to a third. A pump or fan with a light starting load is ideal; a loaded conveyor or crusher is not.</p>
+
+  <h2>When to use it — and when not to</h2>
+  <p>Use star-delta from about 11&nbsp;kW (15&nbsp;HP) upwards, or whenever a direct start would dip the supply voltage enough to disturb other equipment. It is simple, cheap and well understood, and it needs no electronics.</p>
+  <p>Do not use it on a motor whose nameplate says delta-only at your supply voltage — actually a motor nameplated 400&nbsp;V delta is exactly what star-delta needs (its windings are rated for 400&nbsp;V in delta, and they see 230&nbsp;V in star). The real trap is the reverse: a motor nameplated 230&nbsp;V delta / 400&nbsp;V star must never be run in delta on a 400&nbsp;V supply, star-delta or not. Also avoid star-delta where the load needs high starting torque, or where the motor must start and stop frequently — the changeover transient and the contactor wear add up. For those jobs a soft starter or a variable frequency drive is the better choice.</p>
+
+  <h2>Common faults</h2>
+  <ul>
+    <li><strong>Motor stalls in star and never changes over:</strong> timer set too short, or the load torque is higher than the star torque.</li>
+    <li><strong>Loud bang at changeover:</strong> timer set too long — the motor is already at speed and the reconnection transient is harsh. Shorten the time.</li>
+    <li><strong>Overload trips at normal load:</strong> relay set to line current instead of 0.58 × line current, or wired in the line instead of the delta circuit.</li>
+    <li><strong>Star contactor welded:</strong> changeover too slow, or the timer failed and both star and delta were briefly closed together.</li>
+  </ul>
+
+  <div class="safety"><strong>Safety note:</strong> Star-delta starters have live terminals in the starter box even when the motor is stopped, and the changeover involves two contactors that must never close together — always fit the mechanical and electrical interlocks, test them, and isolate and lock out the supply before working inside the starter.</div>
+
+  <div class="related">
+    <h3>Related calculators</h3>
+    <ul>
+      <li><a href="../index.html#calc-motor">3-Phase Motor Current &amp; Breaker Calculator</a> — rated and starting current for your motor</li>
+      <li><a href="../index.html#calc-vdrop">Voltage Drop &amp; Cable Sizing Calculator</a> — check the voltage dip at start</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>MotorWinding Hub</h4>
+        <p>Free motor winding and electrical engineering calculators for rewinding workshops and field electricians. IEC 60034 based · 400V / 230V · 50Hz.</p>
+        <p style="margin-top:8px">motorwindinghub.github.io</p>
+      </div>
+      <div>
+        <h4>Calculators</h4>
+        <ul>
+          <li><a href="../index.html#calc-winding">Winding Turns &amp; Copper Weight</a></li>
+          <li><a href="../index.html#calc-gauge">SWG / AWG Converter</a></li>
+          <li><a href="../index.html#calc-motor">Motor Current &amp; Breaker</a></li>
+          <li><a href="../index.html#calc-capacitor">Capacitor &amp; Power Factor</a></li>
+          <li><a href="../index.html#calc-vdrop">Voltage Drop &amp; Cable Size</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="winding-design-basics.html">Stator Winding Design Basics</a></li>
+          <li><a href="single-phase-capacitor-wiring.html">Single-Phase Capacitor Wiring</a></li>
+          <li><a href="star-delta-starting.html">Star-Delta (Y-Δ) Starting</a></li>
+          <li><a href="insulation-testing-megger.html">Insulation Testing (Megger Test)</a></li>
+          <li><a href="vfd-insulation-stress.html">VFDs and Insulation Stress</a></li>
+          <li><a href="bearing-care-greasing.html">Bearing Care and Greasing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 MotorWinding Hub · All calculations run locally in your browser · Results are estimates — verify with manufacturer data and local wiring regulations.</div>
+  </div>
+</footer>
+
+</body>
+</html>

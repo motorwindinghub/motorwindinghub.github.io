@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stator Winding Design Basics — MotorWinding Hub</title>
+<meta name="description" content="How to design a stator rewind: recording the original winding, turns per coil and magnetic flux, wire size and slot fill factor, coil pitch, and a worked 3.7 kW example.">
+<meta name="theme-color" content="#0f172a">
+<style>
+:root{--navy:#0f172a;--navy2:#1e293b;--amber:#f59e0b;--amber-dark:#d97706;--amber-bg:#fef3c7;--bg:#f1f5f9;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+a{color:var(--amber-dark)}
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.header-in{display:flex;align-items:center;gap:14px;padding:13px 16px;max-width:1080px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:1;min-width:200px}
+.brand .mark{width:38px;height:38px;border-radius:9px;background:var(--amber);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;flex:none}
+.brand b{font-size:19px;letter-spacing:.2px}
+.brand b span{color:var(--amber)}
+.brand small{display:block;font-size:11.5px;color:#94a3b8;font-weight:400}
+nav.main-nav{display:flex;gap:4px;flex-wrap:wrap}
+nav.main-nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:600;padding:8px 11px;border-radius:8px}
+nav.main-nav a:hover{background:var(--navy2);color:#fff}
+.article{padding:26px 0 12px}
+.back{margin-bottom:10px}
+.back a{font-weight:700;text-decoration:none}
+.back a:hover{text-decoration:underline}
+.crumb{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:6px}
+.article h1{font-size:clamp(26px,4.5vw,34px);line-height:1.25;margin-bottom:10px}
+.lede{font-size:17px;color:#334155;margin-bottom:22px}
+.article h2{font-size:21px;margin:28px 0 8px;padding-top:6px;border-top:2px solid var(--amber);display:inline-block}
+.article h3{font-size:17px;margin:18px 0 6px}
+.article p{font-size:15.5px;color:#1e293b;margin-bottom:12px}
+.article ul,.article ol{margin:0 0 14px 22px;font-size:15.5px;color:#1e293b}
+.article li{margin-bottom:6px}
+.article table{border-collapse:collapse;width:100%;font-size:14px;margin:12px 0 16px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.article th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px}
+.article td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.article tr:nth-child(even) td{background:#f8fafc}
+.formula{font-size:13.5px;color:var(--muted);background:#fff;border:1px dashed var(--border);border-radius:8px;padding:10px 12px;margin:12px 0}
+.formula code{color:var(--navy);font-weight:600}
+.safety{background:var(--red-bg);border-left:4px solid var(--red);border-radius:10px;padding:14px 16px;margin:22px 0;font-size:14.5px;color:#7f1d1d}
+.related{background:var(--amber-bg);border:1px solid #fde68a;border-radius:12px;padding:16px 18px;margin:22px 0}
+.related h3{font-size:15px;margin:0 0 8px}
+.related ul{margin:0 0 0 20px}
+.related li{margin-bottom:4px}
+footer{background:var(--navy);color:#94a3b8;margin-top:44px;padding:30px 0 26px}
+footer .cols{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:640px){footer .cols{grid-template-columns:2fr 1fr 1fr}}
+footer h4{color:#fff;font-size:15px;margin-bottom:10px}
+footer p,footer a{font-size:13.5px;color:#94a3b8;text-decoration:none}
+footer a:hover{color:#fff}
+footer ul{list-style:none}
+footer li{margin-bottom:6px}
+.copy{border-top:1px solid #1e293b;margin-top:22px;padding-top:16px;font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <a class="brand" href="../index.html"><span class="mark">MW</span><span><b>MotorWinding <span>Hub</span></b><small>motorwindinghub.github.io</small></span></a>
+    <nav class="main-nav">
+      <a href="../index.html#calculators">Calculators</a>
+      <a href="../index.html#reference">Reference Table</a>
+      <a href="../index.html#guides">Guides</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap article">
+  <p class="back"><a href="../index.html">&larr; Back to MotorWinding Hub</a></p>
+  <p class="crumb">Guides / Winding Design</p>
+  <h1>Stator Winding Design Basics</h1>
+  <p class="lede">A good rewind starts long before the first coil is wound. If you record the original winding, choose turns and wire size from physics rather than habit, and check the slot fill before you order copper, the motor will come back running the way the manufacturer intended.</p>
+
+  <h2>Start by recording the original winding</h2>
+  <p>Before you strip anything, write down everything the old winding can tell you. Count the stator slots and the poles, note whether the connection is star or delta, and count the coils per phase. Then strip one coil carefully and count its turns, and measure the bare copper diameter with a micrometer after burning or scraping off the enamel. A common beginner error is measuring the wire with the enamel still on: on a 1.0&nbsp;mm wire the coating adds roughly 0.05–0.08&nbsp;mm, which is enough to throw your resistance and fill calculations off by more than ten percent.</p>
+  <p>Also record the coil span (for example 1–10 on a 36-slot stator), the shape of the coil, the slot liner thickness, and the length of the core stack. Photograph the end windings before you remove them — the overhang shape determines how much wire the new coils need, and that length is what the mean turn length estimates.</p>
+
+  <h2>Turns per coil set the magnetic flux</h2>
+  <p>The number of turns per coil is the most important figure in the whole design, because it sets the magnetic flux in the core. The induced voltage per turn is fixed by the supply voltage divided by the turns in series per phase, so fewer turns means higher flux density in the iron. If the flux density climbs too high, the core saturates: the motor draws a large magnetising current even at no load, runs hot, and hums loudly. More turns than the original lowers the flux and the torque, and the motor may stall under loads it used to handle easily.</p>
+  <p>Small changes of around ±5% are usually tolerated, but a rewind should normally match the original turns exactly. The only good reason to change the turns is a deliberate redesign — for example rewinding a 400&nbsp;V motor for 230&nbsp;V, where the turns per coil roughly halve and the wire cross-section roughly doubles to carry twice the current.</p>
+
+  <h2>Wire size, current density and slot fill</h2>
+  <p>Wire diameter is a compromise. Thicker wire has lower resistance and runs cooler, but it takes up more slot space and is harder to wind. The usual guide for enclosed motor windings is a current density of about 4&nbsp;A per mm² of copper. That is a conservative rule of thumb, not a rating: a well-ventilated open motor can run higher, and a totally enclosed motor in a hot plant room should run lower.</p>
+  <p>Slot fill factor is the percentage of the usable slot area taken up by copper. Aim for roughly 35–55%. Below about 30% you are wasting slot space and the winding will be loose, which invites vibration. Above about 60% the coils will not fit without force, and forcing them damages the enamel — a nicked wire is a future short circuit. Remember that the slot liner, the wedge and the separators all take space, so measure the usable area after the liner is fitted, not the bare slot.</p>
+
+  <h2>Coil pitch and winding layout</h2>
+  <p>Coil pitch is the distance, in slots, between the two sides of one coil. Full pitch on a 4-pole, 36-slot stator is 9 slots (36 ÷ 4), and most stators are wound with a slightly short-pitched coil — for example a span of 1–8 instead of 1–10 — because short pitching reduces the fifth and seventh harmonics and makes the coils easier to insert. The trade-off is a small drop in the winding factor, typically two or three percent, which is a fair price for a quieter motor and easier winding.</p>
+  <p>Draw the layout on paper before you wind. Mark each slot, assign phases A, B and C, and work out the coil groups. On a three-phase, 4-pole, 36-slot stator there are 12 coil groups (3 phases × 4 poles), three slots per group. Getting this sketch right saves hours of unpicking a wrongly connected winding.</p>
+
+  <h2>Worked example: 3.7&nbsp;kW, 36-slot motor</h2>
+  <p>Take a typical 3.7&nbsp;kW (5&nbsp;HP), 4-pole, 36-slot stator with a 100&nbsp;mm core stack, a mean coil width of 80&nbsp;mm, 20 turns per coil of 1.0&nbsp;mm copper wire, and 50&nbsp;mm² of usable slot area:</p>
+  <table>
+    <tr><th>Quantity</th><th>Value</th><th>How it is found</th></tr>
+    <tr><td>Mean turn length (MTL)</td><td>360 mm</td><td>2 × (100 + 80)</td></tr>
+    <tr><td>Total wire length</td><td>259.2 m</td><td>36 slots × 20 turns × 360 mm</td></tr>
+    <tr><td>Copper weight (+5% allowance)</td><td>1.92 kg</td><td>length × area × density × 1.05</td></tr>
+    <tr><td>Coil resistance at 20&nbsp;°C</td><td>5.54 Ω</td><td>ρ × length ÷ area</td></tr>
+    <tr><td>Coil resistance at 75&nbsp;°C</td><td>6.74 Ω</td><td>R20 × (1 + 0.00393 × 55)</td></tr>
+    <tr><td>Slot fill factor</td><td>31.4%</td><td>20 × 0.785 mm² ÷ 50 mm²</td></tr>
+  </table>
+  <p>At 31.4% the fill is a little loose, which is common on small motors — there is room to go up a wire size if the nameplate current allows it. Try the same numbers in the winding calculator with 1.06&nbsp;mm wire and watch the resistance fall and the fill rise.</p>
+
+  <h2>Common mistakes to avoid</h2>
+  <ul>
+    <li><strong>Guessing the turns.</strong> Count them from a stripped coil; do not estimate from the coil's outside size.</li>
+    <li><strong>Reusing old slot liners.</strong> Heat-aged liners crack and let the winding touch the iron. Fit new ones every time.</li>
+    <li><strong>Mixing up star and delta.</strong> A motor rewound for delta but connected in star will run at a third of its torque and stall under load.</li>
+    <li><strong>Forgetting the wedge.</strong> A loose coil vibrates, and vibration wears through enamel in weeks.</li>
+    <li><strong>Skipping the resistance check.</strong> Measure each phase after winding: all three should match within a few percent.</li>
+  </ul>
+
+  <div class="safety"><strong>Safety note:</strong> Always disconnect and lock out the supply before stripping a motor, and treat the old winding as sharp — cut copper ends can cause deep cuts. Never energise a rewound motor until the insulation has been tested (see our megger testing guide) and the terminal box is closed.</div>
+
+  <div class="related">
+    <h3>Related calculators</h3>
+    <ul>
+      <li><a href="../index.html#calc-winding">Winding Turns &amp; Copper Weight Calculator</a> — run the numbers for your own stator</li>
+      <li><a href="../index.html#calc-gauge">SWG / AWG / mm² Wire Gauge Converter</a> — check wire sizes and resistance</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>MotorWinding Hub</h4>
+        <p>Free motor winding and electrical engineering calculators for rewinding workshops and field electricians. IEC 60034 based · 400V / 230V · 50Hz.</p>
+        <p style="margin-top:8px">motorwindinghub.github.io</p>
+      </div>
+      <div>
+        <h4>Calculators</h4>
+        <ul>
+          <li><a href="../index.html#calc-winding">Winding Turns &amp; Copper Weight</a></li>
+          <li><a href="../index.html#calc-gauge">SWG / AWG Converter</a></li>
+          <li><a href="../index.html#calc-motor">Motor Current &amp; Breaker</a></li>
+          <li><a href="../index.html#calc-capacitor">Capacitor &amp; Power Factor</a></li>
+          <li><a href="../index.html#calc-vdrop">Voltage Drop &amp; Cable Size</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="winding-design-basics.html">Stator Winding Design Basics</a></li>
+          <li><a href="single-phase-capacitor-wiring.html">Single-Phase Capacitor Wiring</a></li>
+          <li><a href="star-delta-starting.html">Star-Delta (Y-Δ) Starting</a></li>
+          <li><a href="insulation-testing-megger.html">Insulation Testing (Megger Test)</a></li>
+          <li><a href="vfd-insulation-stress.html">VFDs and Insulation Stress</a></li>
+          <li><a href="bearing-care-greasing.html">Bearing Care and Greasing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 MotorWinding Hub · All calculations run locally in your browser · Results are estimates — verify with manufacturer data and local wiring regulations.</div>
+  </div>
+</footer>
+
+</body>
+</html>

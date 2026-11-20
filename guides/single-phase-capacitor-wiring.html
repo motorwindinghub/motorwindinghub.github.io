@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Single-Phase Capacitor Wiring — MotorWinding Hub</title>
+<meta name="description" content="How single-phase induction motors start: main and auxiliary windings, run and start capacitors, the centrifugal switch, wiring steps, capacitor sizing and reversing direction.">
+<meta name="theme-color" content="#0f172a">
+<style>
+:root{--navy:#0f172a;--navy2:#1e293b;--amber:#f59e0b;--amber-dark:#d97706;--amber-bg:#fef3c7;--bg:#f1f5f9;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+a{color:var(--amber-dark)}
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.header-in{display:flex;align-items:center;gap:14px;padding:13px 16px;max-width:1080px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:1;min-width:200px}
+.brand .mark{width:38px;height:38px;border-radius:9px;background:var(--amber);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;flex:none}
+.brand b{font-size:19px;letter-spacing:.2px}
+.brand b span{color:var(--amber)}
+.brand small{display:block;font-size:11.5px;color:#94a3b8;font-weight:400}
+nav.main-nav{display:flex;gap:4px;flex-wrap:wrap}
+nav.main-nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:600;padding:8px 11px;border-radius:8px}
+nav.main-nav a:hover{background:var(--navy2);color:#fff}
+.article{padding:26px 0 12px}
+.back{margin-bottom:10px}
+.back a{font-weight:700;text-decoration:none}
+.back a:hover{text-decoration:underline}
+.crumb{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:6px}
+.article h1{font-size:clamp(26px,4.5vw,34px);line-height:1.25;margin-bottom:10px}
+.lede{font-size:17px;color:#334155;margin-bottom:22px}
+.article h2{font-size:21px;margin:28px 0 8px;padding-top:6px;border-top:2px solid var(--amber);display:inline-block}
+.article h3{font-size:17px;margin:18px 0 6px}
+.article p{font-size:15.5px;color:#1e293b;margin-bottom:12px}
+.article ul,.article ol{margin:0 0 14px 22px;font-size:15.5px;color:#1e293b}
+.article li{margin-bottom:6px}
+.article table{border-collapse:collapse;width:100%;font-size:14px;margin:12px 0 16px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.article th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px}
+.article td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.article tr:nth-child(even) td{background:#f8fafc}
+.formula{font-size:13.5px;color:var(--muted);background:#fff;border:1px dashed var(--border);border-radius:8px;padding:10px 12px;margin:12px 0}
+.formula code{color:var(--navy);font-weight:600}
+.safety{background:var(--red-bg);border-left:4px solid var(--red);border-radius:10px;padding:14px 16px;margin:22px 0;font-size:14.5px;color:#7f1d1d}
+.related{background:var(--amber-bg);border:1px solid #fde68a;border-radius:12px;padding:16px 18px;margin:22px 0}
+.related h3{font-size:15px;margin:0 0 8px}
+.related ul{margin:0 0 0 20px}
+.related li{margin-bottom:4px}
+footer{background:var(--navy);color:#94a3b8;margin-top:44px;padding:30px 0 26px}
+footer .cols{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:640px){footer .cols{grid-template-columns:2fr 1fr 1fr}}
+footer h4{color:#fff;font-size:15px;margin-bottom:10px}
+footer p,footer a{font-size:13.5px;color:#94a3b8;text-decoration:none}
+footer a:hover{color:#fff}
+footer ul{list-style:none}
+footer li{margin-bottom:6px}
+.copy{border-top:1px solid #1e293b;margin-top:22px;padding-top:16px;font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <a class="brand" href="../index.html"><span class="mark">MW</span><span><b>MotorWinding <span>Hub</span></b><small>motorwindinghub.github.io</small></span></a>
+    <nav class="main-nav">
+      <a href="../index.html#calculators">Calculators</a>
+      <a href="../index.html#reference">Reference Table</a>
+      <a href="../index.html#guides">Guides</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap article">
+  <p class="back"><a href="../index.html">&larr; Back to MotorWinding Hub</a></p>
+  <p class="crumb">Guides / Single-Phase Motors</p>
+  <h1>Single-Phase Capacitor Wiring</h1>
+  <p class="lede">A single-phase supply has no rotating magnetic field, so a single-phase motor cannot start on its own. The capacitor and the auxiliary winding exist for one job only: to create a second, phase-shifted field that drags the rotor into rotation. Get the capacitor and the wiring right and the motor starts cleanly; get them wrong and it hums, overheats, or refuses to turn at all.</p>
+
+  <h2>Why a capacitor is needed at all</h2>
+  <p>A single-phase winding fed with alternating current produces a field that pulses back and forth along one axis. It has no sense of direction, so the rotor has no reason to turn either way. The fix is a second winding — the auxiliary or start winding — placed at ninety electrical degrees to the main winding and fed through a capacitor. The capacitor shifts the auxiliary current by roughly 80–90 degrees relative to the main current, and the two fields combine into a rotating field that gives the motor starting torque. Once the motor is up to speed, the job of the capacitor is mostly done, though many motors keep a smaller run capacitor in circuit permanently to improve running power factor and torque.</p>
+
+  <h2>Main winding versus auxiliary winding</h2>
+  <p>Before you wire anything, identify the two windings with a multimeter on the resistance range. The main (running) winding is wound with thicker wire and has the lower resistance — typically a few ohms on a small motor. The auxiliary winding uses thinner wire with more turns, so its resistance is noticeably higher, often two to four times the main winding. Write the values on a tag and keep it with the motor; guessing wrong here is the most common cause of a motor that runs backwards or burns out its start winding.</p>
+  <p>On a motor with four leads out of the terminal box, two belong to the main winding and two to the auxiliary. On a six-lead motor the windings are split so the direction can be reversed by swapping the auxiliary leads. Always confirm with the resistance test rather than trusting wire colours, which vary between manufacturers.</p>
+
+  <h2>Run capacitor and start capacitor</h2>
+  <p>There are two different capacitor jobs, and they must not be mixed up. The <strong>run capacitor</strong> stays in series with the auxiliary winding all the time the motor runs. It is usually an oil-filled or film type rated for continuous AC duty, typically 20–60&nbsp;µF on small motors. The <strong>start capacitor</strong> is a larger electrolytic type, typically 100–300&nbsp;µF, and it is only in circuit for the first second or two of starting. It is switched out by a centrifugal switch on the shaft (or by a starting relay) once the motor reaches about 75% of full speed. A start capacitor left in circuit will overheat and fail within minutes, sometimes violently, so the switch must work.</p>
+
+  <h2>Worked example: 1.5&nbsp;kW pump motor</h2>
+  <p>For a 1.5&nbsp;kW single-phase pump motor at 230&nbsp;V / 50&nbsp;Hz, the rule of thumb of about 70&nbsp;µF per kW gives a run capacitor of roughly 105&nbsp;µF. The start capacitor should be about 2.5–3 times the run value, so 250–300&nbsp;µF. Both capacitors must be rated for at least 400–450&nbsp;V AC — the voltage across a running capacitor is higher than the supply voltage because of the resonance between the capacitor and the auxiliary winding inductance. A 250&nbsp;V capacitor in this position will not last.</p>
+  <table>
+    <tr><th>Motor size</th><th>Run capacitor (est.)</th><th>Start capacitor (est.)</th><th>Minimum voltage rating</th></tr>
+    <tr><td>0.37 kW (0.5 HP)</td><td>≈ 25 µF</td><td>60 – 80 µF</td><td>400 V AC</td></tr>
+    <tr><td>0.75 kW (1 HP)</td><td>≈ 50 µF</td><td>125 – 150 µF</td><td>400 V AC</td></tr>
+    <tr><td>1.5 kW (2 HP)</td><td>≈ 105 µF</td><td>250 – 300 µF</td><td>450 V AC</td></tr>
+    <tr><td>2.2 kW (3 HP)</td><td>≈ 150 µF</td><td>350 – 450 µF</td><td>450 V AC</td></tr>
+  </table>
+  <p>These are starting points, not exact values. The correct run capacitor is the one that makes the main and auxiliary winding currents roughly equal under load — measure both with a clamp meter and adjust if they differ by more than about 20%.</p>
+
+  <h2>Wiring steps</h2>
+  <ol>
+    <li>Identify the windings with the resistance test and mark the leads.</li>
+    <li>Connect the run capacitor permanently in series with the auxiliary winding.</li>
+    <li>Connect the start capacitor (if fitted) in parallel with the run capacitor, through the centrifugal switch or starting relay.</li>
+    <li>Wire the main winding directly across the supply, through the overload protection.</li>
+    <li>Check the centrifugal switch moves freely and clicks as the shaft is spun by hand.</li>
+    <li>Run the motor on no load first, listen for the switch dropping out, and measure both winding currents.</li>
+  </ol>
+
+  <h2>Reversing the direction</h2>
+  <p>To reverse a capacitor-start motor, swap the two ends of the auxiliary winding only — the main winding stays exactly as it is. Swapping the supply leads does nothing, because the motor is not polarity-sensitive. If the terminal box has the auxiliary leads on separate terminals, the swap is a two-minute job; if the windings are joined inside the motor, the end shield has to come off.</p>
+
+  <h2>Fault finding</h2>
+  <ul>
+    <li><strong>Motor hums but will not start:</strong> open start capacitor, stuck centrifugal switch, or open auxiliary winding.</li>
+    <li><strong>Motor starts but trips the overload:</strong> centrifugal switch not dropping out, or the start capacitor left in circuit.</li>
+    <li><strong>Motor runs hot on light load:</strong> run capacitor too small or too large, or the wrong value fitted.</li>
+    <li><strong>Capacitor bulged or leaking:</strong> voltage rating too low, or a start capacitor that stayed in circuit.</li>
+  </ul>
+
+  <div class="safety"><strong>Safety note:</strong> Capacitors hold a charge after the power is off. Always discharge a capacitor with an insulated resistor or a proper discharge tool before touching its terminals — never short it with a screwdriver, which can weld, spray metal, or damage the capacitor. Work with the supply isolated and locked out.</div>
+
+  <div class="related">
+    <h3>Related calculators</h3>
+    <ul>
+      <li><a href="../index.html#calc-capacitor">Capacitor &amp; Power Factor Calculator</a> — size run and start capacitors for your motor</li>
+      <li><a href="../index.html#calc-motor">3-Phase Motor Current &amp; Breaker Calculator</a> — check rated current and protection</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>MotorWinding Hub</h4>
+        <p>Free motor winding and electrical engineering calculators for rewinding workshops and field electricians. IEC 60034 based · 400V / 230V · 50Hz.</p>
+        <p style="margin-top:8px">motorwindinghub.github.io</p>
+      </div>
+      <div>
+        <h4>Calculators</h4>
+        <ul>
+          <li><a href="../index.html#calc-winding">Winding Turns &amp; Copper Weight</a></li>
+          <li><a href="../index.html#calc-gauge">SWG / AWG Converter</a></li>
+          <li><a href="../index.html#calc-motor">Motor Current &amp; Breaker</a></li>
+          <li><a href="../index.html#calc-capacitor">Capacitor &amp; Power Factor</a></li>
+          <li><a href="../index.html#calc-vdrop">Voltage Drop &amp; Cable Size</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="winding-design-basics.html">Stator Winding Design Basics</a></li>
+          <li><a href="single-phase-capacitor-wiring.html">Single-Phase Capacitor Wiring</a></li>
+          <li><a href="star-delta-starting.html">Star-Delta (Y-Δ) Starting</a></li>
+          <li><a href="insulation-testing-megger.html">Insulation Testing (Megger Test)</a></li>
+          <li><a href="vfd-insulation-stress.html">VFDs and Insulation Stress</a></li>
+          <li><a href="bearing-care-greasing.html">Bearing Care and Greasing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 MotorWinding Hub · All calculations run locally in your browser · Results are estimates — verify with manufacturer data and local wiring regulations.</div>
+  </div>
+</footer>
+
+</body>
+</html>

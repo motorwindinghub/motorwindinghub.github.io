@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insulation Testing (Megger Test) — MotorWinding Hub</title>
+<meta name="description" content="How to megger-test a motor: choosing 500V or 1000V, the step-by-step test, temperature correction, polarisation index, and what the readings mean.">
+<meta name="theme-color" content="#0f172a">
+<style>
+:root{--navy:#0f172a;--navy2:#1e293b;--amber:#f59e0b;--amber-dark:#d97706;--amber-bg:#fef3c7;--bg:#f1f5f9;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+a{color:var(--amber-dark)}
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.header-in{display:flex;align-items:center;gap:14px;padding:13px 16px;max-width:1080px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:1;min-width:200px}
+.brand .mark{width:38px;height:38px;border-radius:9px;background:var(--amber);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;flex:none}
+.brand b{font-size:19px;letter-spacing:.2px}
+.brand b span{color:var(--amber)}
+.brand small{display:block;font-size:11.5px;color:#94a3b8;font-weight:400}
+nav.main-nav{display:flex;gap:4px;flex-wrap:wrap}
+nav.main-nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:600;padding:8px 11px;border-radius:8px}
+nav.main-nav a:hover{background:var(--navy2);color:#fff}
+.article{padding:26px 0 12px}
+.back{margin-bottom:10px}
+.back a{font-weight:700;text-decoration:none}
+.back a:hover{text-decoration:underline}
+.crumb{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:6px}
+.article h1{font-size:clamp(26px,4.5vw,34px);line-height:1.25;margin-bottom:10px}
+.lede{font-size:17px;color:#334155;margin-bottom:22px}
+.article h2{font-size:21px;margin:28px 0 8px;padding-top:6px;border-top:2px solid var(--amber);display:inline-block}
+.article h3{font-size:17px;margin:18px 0 6px}
+.article p{font-size:15.5px;color:#1e293b;margin-bottom:12px}
+.article ul,.article ol{margin:0 0 14px 22px;font-size:15.5px;color:#1e293b}
+.article li{margin-bottom:6px}
+.article table{border-collapse:collapse;width:100%;font-size:14px;margin:12px 0 16px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.article th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px}
+.article td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.article tr:nth-child(even) td{background:#f8fafc}
+.formula{font-size:13.5px;color:var(--muted);background:#fff;border:1px dashed var(--border);border-radius:8px;padding:10px 12px;margin:12px 0}
+.formula code{color:var(--navy);font-weight:600}
+.safety{background:var(--red-bg);border-left:4px solid var(--red);border-radius:10px;padding:14px 16px;margin:22px 0;font-size:14.5px;color:#7f1d1d}
+.related{background:var(--amber-bg);border:1px solid #fde68a;border-radius:12px;padding:16px 18px;margin:22px 0}
+.related h3{font-size:15px;margin:0 0 8px}
+.related ul{margin:0 0 0 20px}
+.related li{margin-bottom:4px}
+footer{background:var(--navy);color:#94a3b8;margin-top:44px;padding:30px 0 26px}
+footer .cols{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:640px){footer .cols{grid-template-columns:2fr 1fr 1fr}}
+footer h4{color:#fff;font-size:15px;margin-bottom:10px}
+footer p,footer a{font-size:13.5px;color:#94a3b8;text-decoration:none}
+footer a:hover{color:#fff}
+footer ul{list-style:none}
+footer li{margin-bottom:6px}
+.copy{border-top:1px solid #1e293b;margin-top:22px;padding-top:16px;font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <a class="brand" href="../index.html"><span class="mark">MW</span><span><b>MotorWinding <span>Hub</span></b><small>motorwindinghub.github.io</small></span></a>
+    <nav class="main-nav">
+      <a href="../index.html#calculators">Calculators</a>
+      <a href="../index.html#reference">Reference Table</a>
+      <a href="../index.html#guides">Guides</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap article">
+  <p class="back"><a href="../index.html">&larr; Back to MotorWinding Hub</a></p>
+  <p class="crumb">Guides / Testing &amp; Diagnostics</p>
+  <h1>Insulation Testing (Megger Test)</h1>
+  <p class="lede">The megger test is the single most useful check you can do on a motor before energising it. It takes five minutes, needs no disassembly, and it will find damp windings, cracked insulation and earth faults that a multimeter cannot see. Every rewound motor should be tested before it leaves the shop — and every suspect motor should be tested before it goes back into service.</p>
+
+  <h2>What insulation resistance actually measures</h2>
+  <p>Insulation resistance is the resistance between the copper winding and the earthed motor frame, measured with a high DC test voltage. Good insulation is an almost perfect insulator, so the reading is in hundreds of megohms. Damp, dirty or heat-damaged insulation lets a small current leak through, and the reading falls. A multimeter on its resistance range uses only a few volts and cannot stress the insulation at all, which is why it reads "open circuit" on windings that are in fact dangerously damp. The megger applies 500&nbsp;V or 1,000&nbsp;V and measures the resulting leakage current, which is a real test of the insulation's condition.</p>
+
+  <h2>Choosing the test voltage</h2>
+  <p>For low-voltage motors up to 1&nbsp;kV rated voltage, the standard choice is a 500&nbsp;V test. For larger machines and motors rated above 1&nbsp;kV, use 1,000&nbsp;V. Never test electronic equipment, variable frequency drives, or surge protection devices that are still connected to the motor — disconnect them first, because the test voltage will damage them. Check the motor's documentation if you are unsure; the manufacturer usually states the test voltage and the minimum acceptable reading.</p>
+
+  <h2>Step-by-step test</h2>
+  <ol>
+    <li>Isolate the motor from the supply, lock it out, and prove it dead.</li>
+    <li>Disconnect the motor leads from the starter, drive and any capacitors.</li>
+    <li>Clean the terminal box — surface dirt and moisture give false low readings.</li>
+    <li>Connect the megger's earth lead to the motor frame and the line lead to one phase winding.</li>
+    <li>Short the other two phases together and connect them to the frame for a phase-to-earth test, or test each phase in turn.</li>
+    <li>Crank or press test for 60 seconds and record the reading at 1 minute, with the winding temperature.</li>
+    <li>Discharge the winding through the megger's discharge function before touching anything.</li>
+  </ol>
+  <p>Test each phase separately, and also test between phases (winding to winding) on a motor whose phases are not already joined. A phase-to-phase fault will not show on a phase-to-earth test, and it is exactly the fault a rewind can introduce if two coils touch.</p>
+
+  <h2>Temperature correction</h2>
+  <p>Insulation resistance roughly halves for every 10&nbsp;°C rise in winding temperature, so a reading taken on a hot motor always looks worse than the same winding cold. Always record the temperature with the reading, and correct back to a common reference — 40&nbsp;°C is the usual one — before comparing readings taken weeks apart. A practical shortcut used in the field is to double the reading for every 10&nbsp;°C below 40&nbsp;°C, and halve it for every 10&nbsp;°C above. Without the temperature, a reading is only half a measurement.</p>
+
+  <h2>Reading the results</h2>
+  <table>
+    <tr><th>Reading at 40&nbsp;°C (1 min)</th><th>Verdict</th><th>Action</th></tr>
+    <tr><td>Above 100 MΩ</td><td>Good</td><td>Fit for service</td></tr>
+    <tr><td>10 – 100 MΩ</td><td>Fair</td><td>Serviceable, but trend it — test again in 3–6 months</td></tr>
+    <tr><td>2 – 10 MΩ</td><td>Poor</td><td>Investigate: damp, dirt or ageing insulation</td></tr>
+    <tr><td>Below 2 MΩ</td><td>Bad</td><td>Dry out or rewind before energising</td></tr>
+    <tr><td>Near 0 MΩ</td><td>Earth fault</td><td>Do not energise — locate and repair the fault</td></tr>
+  </table>
+  <p>These are field guides, not pass/fail limits carved in stone. A new rewound motor should read well above 100&nbsp;MΩ; an old motor in a damp plant may live happily at 20&nbsp;MΩ for years. What matters most is the trend: a reading that halves every few months is a winding on its way out, whatever the absolute number.</p>
+
+  <h2>Polarisation index (PI)</h2>
+  <p>For larger motors, the polarisation index adds a second dimension. It is the ratio of the 10-minute reading to the 1-minute reading: PI = R10 ÷ R1. Clean, dry insulation polarises slowly, so the resistance keeps rising and the PI is above 2. Damp or contaminated insulation polarises quickly and the PI drops towards 1. A PI below 1.5 on a large machine is a warning worth investigating, even if the 1-minute reading looks acceptable.</p>
+
+  <h2>Drying a damp winding</h2>
+  <p>A motor that reads low because of damp can often be saved without a rewind. The usual methods are gentle oven drying at 80–100&nbsp;°C for several hours, or passing a low DC current through the windings to warm them from the inside — never more than about a third of rated current, with the rotor locked. Re-test every hour or two and stop when the reading has risen above 100&nbsp;MΩ and is still climbing. If the reading plateaus low, the insulation is damaged, not just damp, and drying will not fix it.</p>
+
+  <div class="safety"><strong>Safety note:</strong> A megger puts 500–1,000&nbsp;V DC on the winding, and the winding holds that charge after the test. Always use the instrument's discharge function and wait for the voltage to fall to zero before touching the terminals. Never megger-test a motor that is connected to the supply, a drive, or any electronic equipment.</div>
+
+  <div class="related">
+    <h3>Related calculators</h3>
+    <ul>
+      <li><a href="../index.html#calc-motor">3-Phase Motor Current &amp; Breaker Calculator</a> — verify the motor's rated current after testing</li>
+      <li><a href="../index.html#calc-winding">Winding Turns &amp; Copper Weight Calculator</a> — plan a rewind if the insulation has failed</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>MotorWinding Hub</h4>
+        <p>Free motor winding and electrical engineering calculators for rewinding workshops and field electricians. IEC 60034 based · 400V / 230V · 50Hz.</p>
+        <p style="margin-top:8px">motorwindinghub.github.io</p>
+      </div>
+      <div>
+        <h4>Calculators</h4>
+        <ul>
+          <li><a href="../index.html#calc-winding">Winding Turns &amp; Copper Weight</a></li>
+          <li><a href="../index.html#calc-gauge">SWG / AWG Converter</a></li>
+          <li><a href="../index.html#calc-motor">Motor Current &amp; Breaker</a></li>
+          <li><a href="../index.html#calc-capacitor">Capacitor &amp; Power Factor</a></li>
+          <li><a href="../index.html#calc-vdrop">Voltage Drop &amp; Cable Size</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="winding-design-basics.html">Stator Winding Design Basics</a></li>
+          <li><a href="single-phase-capacitor-wiring.html">Single-Phase Capacitor Wiring</a></li>
+          <li><a href="star-delta-starting.html">Star-Delta (Y-Δ) Starting</a></li>
+          <li><a href="insulation-testing-megger.html">Insulation Testing (Megger Test)</a></li>
+          <li><a href="vfd-insulation-stress.html">VFDs and Insulation Stress</a></li>
+          <li><a href="bearing-care-greasing.html">Bearing Care and Greasing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 MotorWinding Hub · All calculations run locally in your browser · Results are estimates — verify with manufacturer data and local wiring regulations.</div>
+  </div>
+</footer>
+
+</body>
+</html>

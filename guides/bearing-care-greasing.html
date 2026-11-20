@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bearing Care and Greasing — MotorWinding Hub</title>
+<meta name="description" content="Motor bearing care: why bearings fail, reading bearing numbers, vibration limits, grease quantity and relubrication intervals, and fitting bearings without damage.">
+<meta name="theme-color" content="#0f172a">
+<style>
+:root{--navy:#0f172a;--navy2:#1e293b;--amber:#f59e0b;--amber-dark:#d97706;--amber-bg:#fef3c7;--bg:#f1f5f9;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+a{color:var(--amber-dark)}
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.header-in{display:flex;align-items:center;gap:14px;padding:13px 16px;max-width:1080px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex:1;min-width:200px}
+.brand .mark{width:38px;height:38px;border-radius:9px;background:var(--amber);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;flex:none}
+.brand b{font-size:19px;letter-spacing:.2px}
+.brand b span{color:var(--amber)}
+.brand small{display:block;font-size:11.5px;color:#94a3b8;font-weight:400}
+nav.main-nav{display:flex;gap:4px;flex-wrap:wrap}
+nav.main-nav a{color:#cbd5e1;text-decoration:none;font-size:14px;font-weight:600;padding:8px 11px;border-radius:8px}
+nav.main-nav a:hover{background:var(--navy2);color:#fff}
+.article{padding:26px 0 12px}
+.back{margin-bottom:10px}
+.back a{font-weight:700;text-decoration:none}
+.back a:hover{text-decoration:underline}
+.crumb{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber-dark);margin-bottom:6px}
+.article h1{font-size:clamp(26px,4.5vw,34px);line-height:1.25;margin-bottom:10px}
+.lede{font-size:17px;color:#334155;margin-bottom:22px}
+.article h2{font-size:21px;margin:28px 0 8px;padding-top:6px;border-top:2px solid var(--amber);display:inline-block}
+.article h3{font-size:17px;margin:18px 0 6px}
+.article p{font-size:15.5px;color:#1e293b;margin-bottom:12px}
+.article ul,.article ol{margin:0 0 14px 22px;font-size:15.5px;color:#1e293b}
+.article li{margin-bottom:6px}
+.article table{border-collapse:collapse;width:100%;font-size:14px;margin:12px 0 16px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
+.article th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px}
+.article td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.article tr:nth-child(even) td{background:#f8fafc}
+.formula{font-size:13.5px;color:var(--muted);background:#fff;border:1px dashed var(--border);border-radius:8px;padding:10px 12px;margin:12px 0}
+.formula code{color:var(--navy);font-weight:600}
+.safety{background:var(--red-bg);border-left:4px solid var(--red);border-radius:10px;padding:14px 16px;margin:22px 0;font-size:14.5px;color:#7f1d1d}
+.related{background:var(--amber-bg);border:1px solid #fde68a;border-radius:12px;padding:16px 18px;margin:22px 0}
+.related h3{font-size:15px;margin:0 0 8px}
+.related ul{margin:0 0 0 20px}
+.related li{margin-bottom:4px}
+footer{background:var(--navy);color:#94a3b8;margin-top:44px;padding:30px 0 26px}
+footer .cols{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:640px){footer .cols{grid-template-columns:2fr 1fr 1fr}}
+footer h4{color:#fff;font-size:15px;margin-bottom:10px}
+footer p,footer a{font-size:13.5px;color:#94a3b8;text-decoration:none}
+footer a:hover{color:#fff}
+footer ul{list-style:none}
+footer li{margin-bottom:6px}
+.copy{border-top:1px solid #1e293b;margin-top:22px;padding-top:16px;font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <a class="brand" href="../index.html"><span class="mark">MW</span><span><b>MotorWinding <span>Hub</span></b><small>motorwindinghub.github.io</small></span></a>
+    <nav class="main-nav">
+      <a href="../index.html#calculators">Calculators</a>
+      <a href="../index.html#reference">Reference Table</a>
+      <a href="../index.html#guides">Guides</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap article">
+  <p class="back"><a href="../index.html">&larr; Back to MotorWinding Hub</a></p>
+  <p class="crumb">Guides / Maintenance</p>
+  <h1>Bearing Care and Greasing</h1>
+  <p class="lede">More than half of all motor failures start at the bearings — not in the winding. A bearing is a precision component running on a film of grease only a few microns thick, and it fails quietly at first: a little extra noise, a little more vibration, a few degrees hotter. Catch it at that stage and it is a cheap bearing change. Miss it and the rotor drops onto the stator, and you are rewinding the motor as well.</p>
+
+  <h2>Why bearings fail</h2>
+  <p>The most common causes, in rough order, are poor lubrication, contamination, overload and misalignment, and electrical damage. Over-greasing is just as destructive as under-greasing: too much grease churns, overheats, and pushes past the seals, carrying dirt with it. Contamination — dust, water, or metal particles from a worn coupling — grinds the raceways. Misalignment and belt tension overload one side of the bearing and shorten its life dramatically. And on motors fed by variable frequency drives, shaft currents can arc across the bearing (electrical fluting), leaving a washboard pattern on the raceway that you can feel with a fingertip.</p>
+
+  <h2>Reading a bearing number</h2>
+  <p>Motor bearings are almost always deep-groove ball bearings, and the number stamped on the side tells you everything. Take a 6308: the "6" means a deep-groove ball bearing, the "3" is the size series (medium duty), and the "08" gives the bore — 08 × 5 = 40&nbsp;mm shaft. Common motor sizes are 6203 (17&nbsp;mm), 6204 (20&nbsp;mm), 6205 (25&nbsp;mm), 6306 (30&nbsp;mm) and 6308 (40&nbsp;mm). The suffix matters too: ZZ means metal shields on both sides, DDU (or 2RS) means rubber seals on both sides, and C3 means greater than normal internal clearance — standard for electric motors, because the bearing runs hot and the clearance closes up as it warms. Never fit a standard-clearance (CN) bearing where the motor needs C3.</p>
+
+  <h2>Vibration: the early warning</h2>
+  <p>Vibration velocity, measured in mm/s RMS on the bearing housing, is the simplest trend to follow. ISO 10816 gives zone limits by machine size and mounting; for a typical rigidly mounted motor up to 15&nbsp;kW, the practical field guide is:</p>
+  <table>
+    <tr><th>Vibration (mm/s RMS)</th><th>Condition</th><th>Action</th></tr>
+    <tr><td>Below 1.8</td><td>Good</td><td>Normal monitoring</td></tr>
+    <tr><td>1.8 – 4.5</td><td>Satisfactory</td><td>Watch the trend</td></tr>
+    <tr><td>4.5 – 11</td><td>Unsatisfactory</td><td>Plan a bearing change</td></tr>
+    <tr><td>Above 11</td><td>Unacceptable</td><td>Stop and inspect now</td></tr>
+  </table>
+  <p>Measure at the same spot, in the same direction, every time — a reading is only useful if it is comparable with the last one. A sudden rise matters more than the absolute number: a bearing that has run at 2&nbsp;mm/s for a year and jumps to 6&nbsp;mm/s in a month is telling you something.</p>
+
+  <h2>How much grease, and how often</h2>
+  <p>The standard field formula for the grease quantity at each relubrication is G = 0.005 × D × B, where D is the bearing outside diameter in mm, B is the width in mm, and G comes out in grams. It looks crude, but it is the figure the major bearing makers publish, and it keeps you from the two classic errors: a squirt from a grease gun (far too much) and a token dab (far too little).</p>
+  <p>Worked example: a 6308 bearing has an outside diameter of 90&nbsp;mm and a width of 23&nbsp;mm, so G = 0.005 × 90 × 23 ≈ 10&nbsp;grams per greasing. A 6205 (52 × 15&nbsp;mm) needs only about 4&nbsp;grams. Relubrication intervals depend on speed, temperature and duty, but a rough guide for a standard motor at 1,500 RPM in clean conditions is every 4,000–8,000 running hours for small bearings and every 2,000–4,000 hours for large ones; halve the interval for every 15&nbsp;°C above 70&nbsp;°C bearing temperature. Sealed-for-life bearings (2RS/DDU) are not meant to be regreased at all — replace them when they get noisy.</p>
+  <table>
+    <tr><th>Bearing</th><th>Bore</th><th>Outside dia. × width</th><th>Grease per service</th></tr>
+    <tr><td>6203</td><td>17 mm</td><td>40 × 12 mm</td><td>≈ 2.5 g</td></tr>
+    <tr><td>6205</td><td>25 mm</td><td>52 × 15 mm</td><td>≈ 4 g</td></tr>
+    <tr><td>6306</td><td>30 mm</td><td>72 × 19 mm</td><td>≈ 7 g</td></tr>
+    <tr><td>6308</td><td>40 mm</td><td>90 × 23 mm</td><td>≈ 10 g</td></tr>
+  </table>
+  <p>Use only the grease type the motor maker specifies — usually a lithium-complex NLGI 2 or 3 grease for standard motors. Mixing grease types can cause the thickener to break down and the grease to run out of the bearing. If you must change type, clean the old grease out completely first.</p>
+
+  <h2>Fitting a bearing without damaging it</h2>
+  <p>Most bearing damage happens during fitting, not during running. The rules are simple but absolute: never hammer a bearing onto a shaft through its outer race — the shock loads pass straight through the balls and dent the raceways (brinelling). Press only on the ring that is being fitted: the inner ring for a shaft fit, the outer ring for a housing fit. Warm the bearing to about 80–110&nbsp;°C in an induction heater or a clean oil bath so it slips on easily, and never heat it above 120&nbsp;°C or with an open flame. Replace bearings in pairs on the same motor — if one end is worn, the other is not far behind — and always fit the same clearance class (C3) and seal type as the original.</p>
+
+  <div class="safety"><strong>Safety note:</strong> Always isolate and lock out the motor before working on bearings, and beware of stored energy in coupled equipment — a fan or pump can spin the shaft unexpectedly. Hot bearings and hot oil cause serious burns; wear gloves and eye protection, and let heated bearings cool before handling them with bare hands.</div>
+
+  <div class="related">
+    <h3>Related calculators</h3>
+    <ul>
+      <li><a href="../index.html#calc-motor">3-Phase Motor Current &amp; Breaker Calculator</a> — a failing bearing raises the motor current; check it against rated current</li>
+      <li><a href="../index.html#calc-winding">Winding Turns &amp; Copper Weight Calculator</a> — plan a rewind if a bearing failure damaged the winding</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>MotorWinding Hub</h4>
+        <p>Free motor winding and electrical engineering calculators for rewinding workshops and field electricians. IEC 60034 based · 400V / 230V · 50Hz.</p>
+        <p style="margin-top:8px">motorwindinghub.github.io</p>
+      </div>
+      <div>
+        <h4>Calculators</h4>
+        <ul>
+          <li><a href="../index.html#calc-winding">Winding Turns &amp; Copper Weight</a></li>
+          <li><a href="../index.html#calc-gauge">SWG / AWG Converter</a></li>
+          <li><a href="../index.html#calc-motor">Motor Current &amp; Breaker</a></li>
+          <li><a href="../index.html#calc-capacitor">Capacitor &amp; Power Factor</a></li>
+          <li><a href="../index.html#calc-vdrop">Voltage Drop &amp; Cable Size</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="winding-design-basics.html">Stator Winding Design Basics</a></li>
+          <li><a href="single-phase-capacitor-wiring.html">Single-Phase Capacitor Wiring</a></li>
+          <li><a href="star-delta-starting.html">Star-Delta (Y-Δ) Starting</a></li>
+          <li><a href="insulation-testing-megger.html">Insulation Testing (Megger Test)</a></li>
+          <li><a href="vfd-insulation-stress.html">VFDs and Insulation Stress</a></li>
+          <li><a href="bearing-care-greasing.html">Bearing Care and Greasing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 MotorWinding Hub · All calculations run locally in your browser · Results are estimates — verify with manufacturer data and local wiring regulations.</div>
+  </div>
+</footer>
+
+</body>
+</html>
