@@ -6,6 +6,7 @@
 <title>Insulation Testing (Megger Test) — MotorWinding Hub</title>
 <meta name="description" content="How to megger-test a motor: choosing 500V or 1000V, the step-by-step test, temperature correction, polarisation index, and what the readings mean.">
 <meta name="theme-color" content="#0f172a">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <style>
 :root{--navy:#0f172a;--navy2:#1e293b;--amber:#f59e0b;--amber-dark:#d97706;--amber-bg:#fef3c7;--bg:#f1f5f9;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.06)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -113,6 +114,29 @@ footer li{margin-bottom:6px}
 
   <h2>Drying a damp winding</h2>
   <p>A motor that reads low because of damp can often be saved without a rewind. The usual methods are gentle oven drying at 80–100&nbsp;°C for several hours, or passing a low DC current through the windings to warm them from the inside — never more than about a third of rated current, with the rotor locked. Re-test every hour or two and stop when the reading has risen above 100&nbsp;MΩ and is still climbing. If the reading plateaus low, the insulation is damaged, not just damp, and drying will not fix it.</p>
+
+
+  <h2>Test voltage and minimum values</h2>
+  <p>Using the wrong test voltage is the most common testing mistake. Too low a voltage will not stress the insulation enough to reveal a weakness; too high a voltage can damage a healthy winding. The table below follows the usual field practice for low-voltage motors on a 400/230 V system.</p>
+  <table>
+    <tr><th>Motor rated voltage</th><th>Test voltage (DC)</th><th>Minimum reading at 40 °C</th></tr>
+    <tr><td>230 V</td><td>500 V</td><td>5 MΩ</td></tr>
+    <tr><td>400 V</td><td>500 V</td><td>5 MΩ</td></tr>
+    <tr><td>690 V</td><td>1,000 V</td><td>10 MΩ</td></tr>
+    <tr><td>After a rewind (any LV motor)</td><td>500 V</td><td>100 MΩ</td></tr>
+  </table>
+  <p>These are practical minimums for a motor going back into service, not the much higher values a new winding should show. A freshly rewound motor should read well above 100 MΩ; if it does not, find out why before the motor leaves the shop.</p>
+
+  <h2>Common causes of a low reading</h2>
+  <p>A low reading does not always mean the winding is ruined, and knowing the cause decides whether the motor can be saved. Damp is the most common: a motor stored in a humid place, or one that has been washed down, can read a few megohms and recover fully after drying. Dirt and carbon dust are next — conductive dust on the end windings gives a low reading that often clears with a careful clean and a blow-out with dry air. Ageing insulation reads low and keeps falling; unlike damp, it does not recover with drying, and the trend over months is steadily downward. A reading near zero usually means a real fault: a winding touching the frame, a damaged slot liner, or a lead chafed through where it leaves the stator. In that case drying and cleaning will not help — the fault has to be found and repaired.</p>
+
+  <h2>Frequently asked questions</h2>
+  <h3>How often should a motor be megger-tested?</h3>
+  <p>Critical motors deserve a test every six to twelve months, and any motor that has been idle for months should be tested before it is started again. Motors in damp or dusty places need testing more often, because their readings fall faster. Keep a log of the readings and the winding temperature each time — the trend matters more than any single number.</p>
+  <h3>Can megger testing damage a good winding?</h3>
+  <p>At the correct test voltage, no. A 500 V test on a 400 V motor is well within what sound insulation can withstand. Damage happens when the wrong voltage is used — for example 1,000 V on a small 230 V motor — or when the motor is tested while still connected to electronic equipment such as a drive or a soft starter, which the test voltage can destroy.</p>
+  <h3>Why correct the reading to 40 °C?</h3>
+  <p>Insulation resistance halves roughly every 10 °C of temperature rise, so a reading taken on a hot motor looks far worse than the same winding cold. Correcting to a standard 40 °C lets you compare readings taken months apart on equal terms, which is the only way to see a genuine downward trend.</p>
 
   <div class="safety"><strong>Safety note:</strong> A megger puts 500–1,000&nbsp;V DC on the winding, and the winding holds that charge after the test. Always use the instrument's discharge function and wait for the voltage to fall to zero before touching the terminals. Never megger-test a motor that is connected to the supply, a drive, or any electronic equipment.</div>
 

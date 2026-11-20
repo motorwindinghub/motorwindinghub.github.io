@@ -6,6 +6,7 @@
 <title>VFDs and Insulation Stress — MotorWinding Hub</title>
 <meta name="description" content="Why variable frequency drives stress motor insulation: PWM switching, dv/dt and reflected waves, cable length effects, inverter-duty wire, filters, carrier frequency and low-speed cooling.">
 <meta name="theme-color" content="#0f172a">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <style>
 :root{--navy:#0f172a;--navy2:#1e293b;--amber:#f59e0b;--amber-dark:#d97706;--amber-bg:#fef3c7;--bg:#f1f5f9;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.06)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -109,6 +110,27 @@ footer li{margin-bottom:6px}
     <li>Keep the varnish impregnation thorough — voids are where partial discharge starts.</li>
     <li>Record on the nameplate or in the job file that the motor is VFD-rated, with the maximum cable length.</li>
   </ul>
+
+
+  <h2>VFD installation checklist</h2>
+  <ol>
+    <li><strong>Check the motor.</strong> Confirm the motor is inverter-duty rated, or that the cable run is short and the carrier frequency will be kept low. Old standard motors on long cables are the worst combination.</li>
+    <li><strong>Use the right cable.</strong> Fit symmetrical three-core plus earth cable, or shielded motor cable, with the shield earthed at the drive end. Keep the cable as short as the layout allows.</li>
+    <li><strong>Fit the filter.</strong> On cable runs over 30 m, fit a dv/dt filter or output reactor at the drive; over 100 m, use a sine-wave filter.</li>
+    <li><strong>Set the carrier frequency.</strong> Start low (2–4 kHz) on older motors and raise it only if the acoustic noise is a problem and the motor insulation allows it.</li>
+    <li><strong>Set the motor data.</strong> Enter the nameplate voltage, current, speed and power into the drive and run the auto-tune if the drive offers one.</li>
+    <li><strong>Check the first turns.</strong> After the first week of running, megger-test the motor and compare with the reading taken before the drive was fitted.</li>
+    <li><strong>Watch low-speed running.</strong> If the motor will run below 20 Hz for long periods, check the temperature rise — the shaft fan moves little air at low speed, and a separate cooling fan may be needed.</li>
+    <li><strong>Earth properly.</strong> Bond the motor frame, the drive and the cable shield to a common earth point to keep bearing currents and interference down.</li>
+  </ol>
+
+  <h2>Frequently asked questions</h2>
+  <h3>Can any standard motor run on a VFD?</h3>
+  <p>Yes, with care. A standard motor on a short cable with a low carrier frequency will usually run for years. The risk grows with cable length, carrier frequency and the age of the insulation. Motors made before the 1990s, or rewound with standard enamel wire, are the most vulnerable — on those, keep the cable short or fit a filter.</p>
+  <h3>Why does the motor get hotter on a VFD at low speed?</h3>
+  <p>Two reasons. First, the shaft-mounted fan turns with the motor, so at 20 Hz it moves less than half the air it moves at 50 Hz. Second, the drive output is not a pure sine wave, so the winding carries extra harmonic currents that add heat. Together they can push a motor that was fine on mains supply into overheating on a drive.</p>
+  <h3>Do I need a sine-wave filter or is a dv/dt filter enough?</h3>
+  <p>For most installations up to about 100 m, a dv/dt filter or output reactor is enough — it slows the voltage edges and keeps the peak voltage within safe limits. Above 100 m, or where the motor is old and the insulation is unknown, a sine-wave filter is the safer choice because it restores a near-sine waveform at the motor terminals.</p>
 
   <div class="safety"><strong>Safety note:</strong> A drive's DC bus stays charged for minutes after the power is switched off — always wait for the drive's display to go fully dark and check the bus voltage with a meter before opening the drive or working on the motor cable. Never megger-test a motor while it is connected to a drive.</div>
 

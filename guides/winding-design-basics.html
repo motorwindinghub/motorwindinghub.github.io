@@ -6,6 +6,7 @@
 <title>Stator Winding Design Basics — MotorWinding Hub</title>
 <meta name="description" content="How to design a stator rewind: recording the original winding, turns per coil and magnetic flux, wire size and slot fill factor, coil pitch, and a worked 3.7 kW example.">
 <meta name="theme-color" content="#0f172a">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <style>
 :root{--navy:#0f172a;--navy2:#1e293b;--amber:#f59e0b;--amber-dark:#d97706;--amber-bg:#fef3c7;--bg:#f1f5f9;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.06)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -113,6 +114,38 @@ footer li{margin-bottom:6px}
     <li><strong>Forgetting the wedge.</strong> A loose coil vibrates, and vibration wears through enamel in weeks.</li>
     <li><strong>Skipping the resistance check.</strong> Measure each phase after winding: all three should match within a few percent.</li>
   </ul>
+
+
+  <h2>Standard slot and pole combinations</h2>
+  <p>Most small and medium three-phase motors use one of a handful of slot counts. Knowing the standard combinations lets you check a stator at a glance: if the slot count does not divide evenly by poles times phases, something has been miscounted.</p>
+  <table>
+    <tr><th>Poles</th><th>Common slot counts</th><th>Slots per pole per phase (q)</th><th>Full pitch (slots)</th></tr>
+    <tr><td>2</td><td>24, 36</td><td>4, 6</td><td>12, 18</td></tr>
+    <tr><td>4</td><td>24, 36, 48</td><td>2, 3, 4</td><td>6, 9, 12</td></tr>
+    <tr><td>6</td><td>36, 54</td><td>2, 3</td><td>6, 9</td></tr>
+    <tr><td>8</td><td>48, 72</td><td>2, 3</td><td>6, 9</td></tr>
+  </table>
+  <p>Full pitch is simply slots divided by poles. A coil wound at full pitch gives the highest winding factor, but most shops short-pitch by one or two slots to suppress harmonics and make the coils easier to insert.</p>
+
+  <h2>Step-by-step rewind procedure</h2>
+  <ol>
+    <li><strong>Record everything.</strong> Note the slot count, poles, connection, turns per coil, wire diameter, coil span, core length and slot liner thickness. Photograph the end windings and the terminal box.</li>
+    <li><strong>Strip and clean.</strong> Cut out the old winding, remove the wedges and liners, and clean the slots of varnish and debris. Check the laminations for burrs that could cut the new insulation.</li>
+    <li><strong>Fit new insulation.</strong> Line every slot with fresh insulation of the right thermal class, fit the phase separators, and make sure each liner sits flat without folds.</li>
+    <li><strong>Wind the coils.</strong> Wind each coil to the recorded turns with the correct wire size, keeping the tension even so the turns pack neatly without stretching the copper.</li>
+    <li><strong>Insert and connect.</strong> Place the coils in the slots in the order shown on your layout sketch, connect the coil groups per phase, and check the star or delta links against the nameplate.</li>
+    <li><strong>Wedge, tie and varnish.</strong> Fit the slot wedges, tie the end windings, then varnish and bake the stator to the varnish maker's schedule.</li>
+    <li><strong>Test before assembly.</strong> Measure the resistance of each phase — all three should agree within a few percent — then megger-test the insulation and record the reading.</li>
+    <li><strong>Run and check.</strong> Reassemble, run the motor unloaded and check the no-load current against the nameplate, then load it and watch the temperature rise.</li>
+  </ol>
+
+  <h2>Frequently asked questions</h2>
+  <h3>Can I rewind a motor with thicker wire than the original?</h3>
+  <p>Only if the slots have room. Thicker wire lowers resistance and losses, but if the fill factor goes above about 60% the coils will not fit without force, and forced coils suffer enamel damage. Check the fill with the winding calculator before ordering wire.</p>
+  <h3>What happens if I get the turns per coil wrong?</h3>
+  <p>Too few turns raises the flux density, so the motor draws excess magnetising current, runs hot and hums. Too many turns lowers the flux and the torque. Either way the motor will not match its nameplate, so count the turns from a stripped coil rather than guessing.</p>
+  <h3>Do I need to change the wire if I rewind a 400 V motor for 230 V?</h3>
+  <p>Yes. Halving the voltage roughly halves the turns per coil and doubles the current, so the wire cross-section should roughly double to keep the current density the same. The slot fill stays similar, because there are half as many turns of twice the area.</p>
 
   <div class="safety"><strong>Safety note:</strong> Always disconnect and lock out the supply before stripping a motor, and treat the old winding as sharp — cut copper ends can cause deep cuts. Never energise a rewound motor until the insulation has been tested (see our megger testing guide) and the terminal box is closed.</div>
 

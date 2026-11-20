@@ -6,6 +6,7 @@
 <title>Single-Phase Capacitor Wiring — MotorWinding Hub</title>
 <meta name="description" content="How single-phase induction motors start: main and auxiliary windings, run and start capacitors, the centrifugal switch, wiring steps, capacitor sizing and reversing direction.">
 <meta name="theme-color" content="#0f172a">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <style>
 :root{--navy:#0f172a;--navy2:#1e293b;--amber:#f59e0b;--amber-dark:#d97706;--amber-bg:#fef3c7;--bg:#f1f5f9;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.06)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -117,6 +118,21 @@ footer li{margin-bottom:6px}
     <li><strong>Motor runs hot on light load:</strong> run capacitor too small or too large, or the wrong value fitted.</li>
     <li><strong>Capacitor bulged or leaking:</strong> voltage rating too low, or a start capacitor that stayed in circuit.</li>
   </ul>
+
+
+  <h2>Testing a capacitor before you fit it</h2>
+  <p>Never fit a capacitor on trust. First discharge it through a resistor — a charged capacitor can give a nasty shock even when it has been out of the motor for hours. Then check it with a multimeter that has a capacitance range: the reading should be within about ±10% of the marked value. A run capacitor that reads well below its marked value has dried out and will leave the motor weak and humming; one that reads near zero is open and useless. Also check for bulging, leaking oil or a cracked case — any of those means the capacitor is finished, whatever the meter says. If your meter has no capacitance range, a rough check is to measure the resistance across the terminals: it should rise steadily as the meter charges the capacitor, then settle at a very high value. A steady low resistance means the capacitor is shorted.</p>
+
+  <h2>Why capacitors fail</h2>
+  <p>Heat is the usual killer. A run capacitor sits in the motor circuit for the whole time the motor runs, and every 10 °C of extra temperature roughly halves its life. Motors in hot plant rooms, motors that start and stop often, and motors fed from a poor supply all wear capacitors faster. Overvoltage is the second cause: a capacitor rated 400 V AC on a supply that regularly peaks above that will fail early, which is why the table above specifies a minimum rating with margin. The third cause is the centrifugal switch sticking closed, which leaves the start capacitor in circuit after the motor is up to speed — it overheats within seconds and usually bursts. If you keep replacing start capacitors on the same motor, check the switch before fitting another one.</p>
+
+  <h2>Frequently asked questions</h2>
+  <h3>Can I use a bigger capacitor than the motor needs?</h3>
+  <p>Not for the run capacitor. A larger run capacitor pushes more current through the auxiliary winding, which overheats it and wastes power. A start capacitor can be a little larger than the minimum, but an oversized one gives a harsher start and stresses the switch. Use the values in the table as a starting point and fine-tune by measuring the winding currents.</p>
+  <h3>Why does my motor hum but not start?</h3>
+  <p>Usually the start capacitor has failed open, or the centrifugal switch is stuck open so the auxiliary winding never gets power. Check the capacitor with a meter and check that the switch clicks as you spin the shaft by hand. If both are good, check the auxiliary winding resistance — an open auxiliary winding gives exactly the same symptom.</p>
+  <h3>How do I know the run capacitor is the right size?</h3>
+  <p>Run the motor under its normal load and measure the main and auxiliary winding currents with a clamp meter. When the capacitor is correct, the two currents are roughly equal. If the auxiliary current is much higher, the capacitor is too big; if it is much lower, the capacitor is too small or has lost capacitance.</p>
 
   <div class="safety"><strong>Safety note:</strong> Capacitors hold a charge after the power is off. Always discharge a capacitor with an insulated resistor or a proper discharge tool before touching its terminals — never short it with a screwdriver, which can weld, spray metal, or damage the capacitor. Work with the supply isolated and locked out.</div>
 

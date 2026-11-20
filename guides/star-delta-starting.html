@@ -6,6 +6,7 @@
 <title>Star-Delta (Y-Δ) Starting — MotorWinding Hub</title>
 <meta name="description" content="How star-delta starting works: why it cuts starting current to one third, the contactor and timer arrangement, when to use it, sizing rules and a worked 15 kW example.">
 <meta name="theme-color" content="#0f172a">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <style>
 :root{--navy:#0f172a;--navy2:#1e293b;--amber:#f59e0b;--amber-dark:#d97706;--amber-bg:#fef3c7;--bg:#f1f5f9;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--green:#15803d;--green-bg:#dcfce7;--red:#b91c1c;--red-bg:#fee2e2;--radius:14px;--shadow:0 1px 3px rgba(15,23,42,.08),0 4px 14px rgba(15,23,42,.06)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -111,6 +112,30 @@ footer li{margin-bottom:6px}
     <li><strong>Overload trips at normal load:</strong> relay set to line current instead of 0.58 × line current, or wired in the line instead of the delta circuit.</li>
     <li><strong>Star contactor welded:</strong> changeover too slow, or the timer failed and both star and delta were briefly closed together.</li>
   </ul>
+
+
+  <h2>Setting the changeover timer</h2>
+  <p>The timer is the part most often set wrong. It should switch from star to delta when the motor is close to full speed — typically 5 to 10 seconds for a fan or pump, longer for a high-inertia load such as a crusher or a large flywheel. If it switches too early, the motor has not built up speed and the changeover produces a second current surge almost as large as a direct start. If it switches too late, the motor sits in star at reduced torque and may stall under load. The practical way to set it is to watch the current with a clamp meter during a start and set the timer a second or two after the current has fallen to near its running value.</p>
+
+  <h2>Step-by-step commissioning</h2>
+  <ol>
+    <li><strong>Check the nameplate.</strong> Confirm the motor is rated 400 V in delta (400/690 V) and that all six winding ends are brought out to the terminal box.</li>
+    <li><strong>Verify the connections.</strong> With the supply isolated, check the winding resistances: all three phases should match, and the star point must not be linked in the terminal box.</li>
+    <li><strong>Wire the contactors.</strong> Main contactor feeds U1, V1, W1; the delta contactor joins U2–V1, V2–W1, W2–U1; the star contactor shorts U2, V2, W2 together.</li>
+    <li><strong>Set the overload.</strong> The overload relay sits in the main contactor line and sees only the phase current, so set it to 0.58 × rated current (16.5 A on a 28.5 A motor).</li>
+    <li><strong>Set the timer.</strong> Start with 8 seconds and adjust after watching the current, as described above.</li>
+    <li><strong>Test without load.</strong> Start the motor unloaded and confirm it changes over smoothly, with no bang and no second surge.</li>
+    <li><strong>Test under load.</strong> Start the driven machine and watch the current at changeover; if the motor dips in speed at the switch, lengthen the timer slightly.</li>
+    <li><strong>Check the run.</strong> After a full start, measure the running current and the temperature of the contactors after 30 minutes.</li>
+  </ol>
+
+  <h2>Frequently asked questions</h2>
+  <h3>Can any 400 V motor use star-delta starting?</h3>
+  <p>No. The motor must be rated 400 V in delta, which the nameplate shows as 400/690 V, and all six winding ends must be available in the terminal box. A 230/400 V motor is already delta at 400 V with only three terminals — it cannot be star-delta started on a 400 V supply.</p>
+  <h3>Why does the motor lose speed at changeover?</h3>
+  <p>At the moment of switching there is a brief break in the supply, and in star the motor only makes a third of its torque. If the timer switches before the motor is near full speed, or if the load is heavy, the motor slows during the break and the delta reconnection draws a large surge. Lengthening the timer usually fixes it; if it does not, the load may need a soft starter or a drive instead.</p>
+  <h3>Is the overload setting really 0.58 times rated current?</h3>
+  <p>Yes, when the overload is wired in the main contactor line — which is the usual arrangement. It sees the phase current, not the line current, and in delta the phase current is the line current divided by √3 (0.58). If the overload is wired in the supply line ahead of the starter, set it to the full rated current instead.</p>
 
   <div class="safety"><strong>Safety note:</strong> Star-delta starters have live terminals in the starter box even when the motor is stopped, and the changeover involves two contactors that must never close together — always fit the mechanical and electrical interlocks, test them, and isolate and lock out the supply before working inside the starter.</div>
 
