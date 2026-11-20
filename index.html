@@ -84,6 +84,9 @@ tr:nth-child(even) td{background:#f8fafc}
 .guide .g-tag{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber-dark)}
 .guide h3{font-size:16.5px;margin:5px 0 7px}
 .guide p{font-size:14px;color:#334155}
+.guide-link{margin-top:10px;font-size:14px;font-weight:700}
+.guide-link a{text-decoration:none}
+.guide-link a:hover{text-decoration:underline}
 /* ---------- FAQ ---------- */
 .faq{max-width:820px}
 .faq-item{background:#fff;border-radius:12px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden}
@@ -337,31 +340,37 @@ footer li{margin-bottom:6px}
       <div class="g-tag">Winding Design</div>
       <h3>Stator Winding Design Basics</h3>
       <p>Count the slots, poles and coils before you strip anything, and record the original turns, wire diameter and connection (star or delta) for every phase. The turns per coil set the magnetic flux: too few turns and the motor draws excess current and overheats; too many and it loses torque. Keep the slot fill factor roughly between 35% and 55% so the coils fit without damaging the enamel.</p>
+      <p class="guide-link"><a href="guides/winding-design-basics.html">Read full guide &rarr;</a></p>
     </div>
     <div class="guide">
       <div class="g-tag">Single-Phase Motors</div>
       <h3>Single-Phase Capacitor Wiring</h3>
       <p>A single-phase motor needs a start winding and a capacitor to create the rotating field. Identify the main and auxiliary windings with a multimeter first — the auxiliary winding usually has the higher resistance. Wire the run capacitor permanently in series with the auxiliary winding, and the start capacitor (if fitted) through the centrifugal switch so it drops out once the motor reaches about 75% of full speed.</p>
+      <p class="guide-link"><a href="guides/single-phase-capacitor-wiring.html">Read full guide &rarr;</a></p>
     </div>
     <div class="guide">
       <div class="g-tag">Starting Methods</div>
       <h3>Star-Delta (Y-Δ) Starting</h3>
       <p>For motors of about 11 kW and above on a weak supply, star-delta starting cuts the starting current to roughly one third of direct-on-line. The motor starts in star, then a timer switches it to delta after a few seconds. Never use star-delta on a motor nameplated for delta-only at your supply voltage, and set the changeover timer so the motor is close to full speed before switching.</p>
+      <p class="guide-link"><a href="guides/star-delta-starting.html">Read full guide &rarr;</a></p>
     </div>
     <div class="guide">
       <div class="g-tag">Testing &amp; Diagnostics</div>
       <h3>Insulation Testing (Megger Test)</h3>
       <p>Before energising a rewound motor, test the insulation resistance between windings and frame with a 500 V megger for low-voltage motors (1,000 V for larger machines). A healthy dry winding reads well above 100 MΩ at room temperature; anything under 1–2 MΩ needs drying or investigation. Always discharge the winding after the test and record the reading with the winding temperature.</p>
+      <p class="guide-link"><a href="guides/insulation-testing-megger.html">Read full guide &rarr;</a></p>
     </div>
     <div class="guide">
       <div class="g-tag">Drives &amp; Inverters</div>
       <h3>VFDs and Insulation Stress</h3>
       <p>A variable frequency drive switches the voltage thousands of times per second, and the fast voltage rise can stress the insulation of the first turns of each coil — especially on older motors and long cable runs. Use inverter-rated enamel wire, keep motor cables short, and consider a dv/dt filter or output reactor when the cable exceeds 20–30 metres. At low speeds the shaft fan moves less air, so watch the temperature.</p>
+      <p class="guide-link"><a href="guides/vfd-insulation-stress.html">Read full guide &rarr;</a></p>
     </div>
     <div class="guide">
       <div class="g-tag">Maintenance</div>
       <h3>Bearing Care and Greasing</h3>
       <p>More than half of all motor failures start at the bearings. Listen for a rough or growling sound, check for excess vibration, and feel the bearing housing temperature during a run. Grease sparingly and only with the specified type — over-greasing overheats the bearing just as surely as running it dry. Replace bearings in pairs, and never hammer a new bearing onto the shaft through its outer race.</p>
+      <p class="guide-link"><a href="guides/bearing-care-greasing.html">Read full guide &rarr;</a></p>
     </div>
   </div>
 </section>
